@@ -9,12 +9,12 @@
     <a-scene>
 
         <a-assets>
-            <a-asset-item id="toy" src="melonpop.glb"></a-asset-item>
+            <a-asset-item id="toy" src="melon.glb"></a-asset-item>
             <a-mixin id="red" material="color: red"></a-mixin>
             <a-mixin id="candle" gltf-model="#toy" random-position="min: -20 -20 -20; max: 20 20 20;" random-rotation="min: -1 -1 -1; max: 360 360 360;"  random-scale="min: -1 -1 -1; max: 1 1 1;" ></a-mixin>
           </a-assets>
 
-          <a-entity entity-generator="mixin: red candle; num: 5"></a-entity>
+          <a-entity entity-generator="mixin: red candle; num: 30"></a-entity>
     </a-scene>
   </body>
 </html>
