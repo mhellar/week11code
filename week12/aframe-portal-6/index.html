@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Animated GLTF</title>
+    <meta name="description" content="aframe-animated model">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- Aframe Extras Component -->
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <!-- Aframe Environment Component -->
+    <script src="https://unpkg.com/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
+<!-- Aframe Web Portal -->
+    <script src="https://unpkg.com/aframe-web-portals@1.0.1/dist/aframe-web-portals.umd.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Add environment -->
+      <a-entity environment="preset:  forest;  skyColor:  #00ff40;  horizonColor:  #f00000;  lighting:  point; fog:  0.97;  groundColor:  #ff4800;  groundColor2:  #396a60;  dressing:  mushrooms;  dressingColor:  #fbff00;  dressingVariance:  1 1 1;  grid:  ylines"></a-entity>
+
+      <a-assets>
+        <!-- Add lights -->
+        <a-mixin id="light"
+        geometry="primitive: sphere; radius: 1.5"
+        material="color: #FFF; shader: flat"
+        light="color: #DDDDFF; distance: 120; intensity: 2; type: point"></a-mixin>
+
+        <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg" crossorigin="anonymous">
+        <!-- Add model in assets section -->
+        <a-asset-item id="mystic" src="model/mystic.glb"></a-asset-item>
+      </a-assets>
+
+      <!--Camera-->
+      <a-entity position="0 1.6 0" camera wasd-controls="acceleration: 15;" look-controls="pointerLockEnabled: false">
+        <a-cursor position="0 0 -.05" scale=".04 .04 1"></a-cursor>
+        <!--For Collision Detection-->
+        <a-cylinder radius="0.75"></a-cylinder>
+      </a-entity>
+      
+      <!-- Background sky. -->
+      <!-- <a-sky height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048"></a-sky> -->
+
+      <!-- Animated Model. -->
+      <a-entity gltf-model="#mystic" position="0.6 0.9 -7.2" scale="1 1 1" animation-mixer></a-entity>
+
+
+      <a-entity position="-3 0 -6" web-portal="url:https://www.spatial.io/s/Mark-Hellars-Hi-Fi-Room-63640ae67e2f0f00018afc80; text:Spatial;"></a-entity>
+
+            <!-- Lights. -->
+            <a-entity animation="property: rotation; to: 0 0 360; dur: 4000; easing: linear; loop: true">
+              <a-entity mixin="light" position="30 0 0"></a-entity>
+            </a-entity>
+      
+            <a-entity animation="property: rotation; to: 360 0 0; dur: 4000; easing: linear; loop: true">
+              <a-entity mixin="light" position="0 0 40"></a-entity>
+            </a-entity>
+
+    </a-scene>
+  </body>
+</html>
